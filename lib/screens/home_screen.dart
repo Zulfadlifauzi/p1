@@ -31,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               height: 180,
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 children: [
                   CarouselSlider(
                     items: [
@@ -96,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               height: 180,
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 children: [
                   CarouselSlider(
                     items: [
