@@ -16,77 +16,189 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         title: const Text('P1'),
       ),
-      body: ListView(
-        children: [
-          Container(
-              padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
-              child: const Text('hello')),
-          const SizedBox(
-            height: 10,
-          ),
-          CarouselSlider(
-            items: [
-              //1st Image of Slider
-              Container(
-                margin: const EdgeInsets.all(6.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/chamber.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 20, bottom: 10, left: 20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text('Valorant'),
+                ],
               ),
-
-              //2nd Image of Slider
-              Container(
-                margin: const EdgeInsets.all(6.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/reyna.png'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-
-              //3rd Image of Slider
-              Container(
-                margin: const EdgeInsets.all(6.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  image: const DecorationImage(
-                    image: AssetImage('assets/jett.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ],
-
-            //Slider Container properties
-            options: CarouselOptions(
-              height: 180.0,
-              enlargeCenterPage: false,
-              autoPlay: true,
-              aspectRatio: 16 / 9,
-              autoPlayCurve: Curves.fastOutSlowIn,
-              enableInfiniteScroll: true,
-              autoPlayAnimationDuration: const Duration(milliseconds: 800),
-              viewportFraction: 0.8,
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            margin: const EdgeInsets.only(left: 20, right: 20),
-            color: Colors.blue,
-            width: 120,
-            height: 120,
-          ),
-          ListView()
-        ],
+            Container(
+              height: 180,
+              child: ListView(
+                children: [
+                  CarouselSlider(
+                    items: [
+                      Container(
+                        margin: const EdgeInsets.all(6.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/chamber.jpg'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.all(6.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/reyna.png'),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.all(6.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/jett.jpg'),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ],
+                    options: CarouselOptions(
+                      height: 180.0,
+                      enlargeCenterPage: false,
+                      autoPlay: true,
+                      aspectRatio: 16 / 9,
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enableInfiniteScroll: true,
+                      autoPlayAnimationDuration:
+                          const Duration(milliseconds: 800),
+                      viewportFraction: 0.8,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 20, right: 20),
+              width: double.infinity,
+              height: 120,
+              color: Colors.blue,
+              child: Container(
+                padding: EdgeInsets.only(left: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [const Text('Valorant Tips and Tricks')],
+                ),
+              ),
+            ),
+            Container(
+              height: 180,
+              child: ListView(
+                children: [
+                  CarouselSlider(
+                    items: [
+                      Container(
+                        margin: const EdgeInsets.all(6.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8.0),
+                          image: const DecorationImage(
+                            image: AssetImage('assets/chamber.jpg'),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ],
+                    options: CarouselOptions(
+                      height: 180.0,
+                      enlargeCenterPage: false,
+                      autoPlay: true,
+                      aspectRatio: 16 / 9,
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enableInfiniteScroll: true,
+                      autoPlayAnimationDuration:
+                          const Duration(milliseconds: 800),
+                      viewportFraction: 0.8,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 20, right: 20),
+              width: double.infinity,
+              height: 120,
+              color: Colors.blue,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 20, right: 20),
+              width: double.infinity,
+              height: 120,
+              color: Colors.blue,
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+
+
+              // Container(
+              //     child: ListView(
+              //   children: [
+              //     CarouselSlider(
+              //       items: [
+              //         Container(
+              //           margin: const EdgeInsets.all(6.0),
+              //           decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(8.0),
+              //             image: const DecorationImage(
+              //               image: AssetImage('assets/chamber.jpg'),
+              //               fit: BoxFit.cover,
+              //             ),
+              //           ),
+              //         ),
+
+              //         //2nd Image of Slider
+              //         Container(
+              //           margin: const EdgeInsets.all(6.0),
+              //           decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(8.0),
+              //             image: const DecorationImage(
+              //               image: AssetImage('assets/reyna.png'),
+              //               fit: BoxFit.cover,
+              //             ),
+              //           ),
+              //         ),
+
+              //         //3rd Image of Slider
+              //         Container(
+              //           margin: const EdgeInsets.all(6.0),
+              //           decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(8.0),
+              //             image: const DecorationImage(
+              //               image: AssetImage('assets/jett.jpg'),
+              //               fit: BoxFit.cover,
+              //             ),
+              //           ),
+              //         ),
+              //       ],
+              //       options: CarouselOptions(
+              //         height: 180.0,
+              //         enlargeCenterPage: false,
+              //         autoPlay: true,
+              //         aspectRatio: 16 / 9,
+              //         autoPlayCurve: Curves.fastOutSlowIn,
+              //         enableInfiniteScroll: true,
+              //         autoPlayAnimationDuration:
+              //             const Duration(milliseconds: 800),
+              //         viewportFraction: 0.8,
+              //       ),
+              //     )
+              //   ],
+              // ))
