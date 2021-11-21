@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:project1/models/valo_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -28,58 +29,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
+            // CarouselSlider.builder(
+            //     itemCount: valorant.length,
+            //     options: CarouselOptions(
+            //       height: 400,
+            //       aspectRatio: 16 / 9,
+            //       viewportFraction: 0.8,
+            //       initialPage: 0,
+            //       enableInfiniteScroll: true,
+            //       reverse: false,
+            //       autoPlay: true,
+            //       autoPlayInterval: Duration(seconds: 3),
+            //       autoPlayAnimationDuration: Duration(milliseconds: 800),
+            //       autoPlayCurve: Curves.fastOutSlowIn,
+            //       enlargeCenterPage: true,
+            //       scrollDirection: Axis.horizontal,
+            //     )),
             Container(
-              height: 180,
-              child: ListView(
-                physics: const BouncingScrollPhysics(),
-                children: [
-                  CarouselSlider(
-                    items: [
-                      Container(
-                        margin: const EdgeInsets.all(6.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.0),
-                          image: const DecorationImage(
-                            image: AssetImage('assets/chamber.jpg'),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(6.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.0),
-                          image: const DecorationImage(
-                            image: AssetImage('assets/reyna.png'),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(6.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.0),
-                          image: const DecorationImage(
-                            image: AssetImage('assets/jett.jpg'),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                    ],
-                    options: CarouselOptions(
-                      height: 180.0,
-                      enlargeCenterPage: false,
-                      autoPlay: true,
-                      aspectRatio: 16 / 9,
-                      autoPlayCurve: Curves.fastOutSlowIn,
-                      enableInfiniteScroll: true,
-                      autoPlayAnimationDuration:
-                          const Duration(milliseconds: 800),
-                      viewportFraction: 0.8,
-                    ),
-                  )
-                ],
-              ),
+                width: MediaQuery.of(context).size.width,
+                height: 180,
+                child: ListView.builder(
+                    itemCount: valorant.length,
+                    scrollDirection: Axis.horizontal,
+                    physics: BouncingScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          Container(
+                              height: 180,
+                              width: 200,
+                              decoration: BoxDecoration(color: Colors.red),
+                              child: Text(valorant[index].name!))
+                        ],
+                      );
+                    })),
+            const SizedBox(
+              height: 10,
             ),
             Container(
               margin: EdgeInsets.only(left: 20, right: 20),
