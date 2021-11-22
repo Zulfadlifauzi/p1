@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 20, bottom: 10, left: 20),
+              padding: const EdgeInsets.only(top: 20, bottom: 10, left: 20),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
@@ -46,13 +46,13 @@ class _HomeScreenState extends State<HomeScreen> {
             //       scrollDirection: Axis.horizontal,
             //     )),
             Container(
-                padding: EdgeInsets.only(left: 10, right: 10),
+                padding: const EdgeInsets.only(left: 10, right: 10),
                 width: MediaQuery.of(context).size.width,
                 height: 120,
                 child: ListView.builder(
                     itemCount: valorant.length,
                     scrollDirection: Axis.horizontal,
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
@@ -80,15 +80,15 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 10,
             ),
             Container(
-              margin: EdgeInsets.only(left: 10, right: 10),
+              margin: const EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
               height: 120,
               color: Colors.blue,
               child: Container(
-                padding: EdgeInsets.only(left: 20),
+                padding: const EdgeInsets.only(left: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [const Text('Valorant Tips and Tricks')],
+                  children: const [Text('Valorant Tips and Tricks')],
                 ),
               ),
             ),
@@ -126,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 10, right: 10),
+              margin: const EdgeInsets.only(left: 10, right: 10),
               width: double.infinity,
               height: 120,
               color: Colors.blue,
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             Container(
-              margin: EdgeInsets.only(left: 20, right: 20),
+              margin: const EdgeInsets.only(left: 20, right: 20),
               width: double.infinity,
               height: 120,
               color: Colors.blue,

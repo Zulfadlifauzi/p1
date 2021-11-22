@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project1/screens/home_screen.dart';
+import 'package:project1/screens/yummly_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const YummlyScreen(),
     );
   }
 }

@@ -10,6 +10,19 @@ class YummlyScreen extends StatefulWidget {
 class _YummlyScreenState extends State<YummlyScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.restaurant_menu),
+            SizedBox(
+              width: 10,
+            ),
+            Text('Restaurant Menu')
+          ],
+        ),
+      ),
+    );
   }
 }
