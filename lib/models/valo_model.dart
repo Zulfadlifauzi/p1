@@ -1,13 +1,13 @@
 class ValoModel {
-  String? image;
   String? name;
   String? description;
+  String? image;
 
-  ValoModel(this.description, this.image, this.name);
+  ValoModel(this.name, this.description, this.image);
 }
 
 List<ValoModel> valorant = valorantData
-    .map((item) => ValoModel(item['image'], item['name'], item['description']))
+    .map((item) => ValoModel(item['name'], item['description'], item['image']))
     .toList();
 
 var valorantData = [
@@ -20,8 +20,7 @@ var valorantData = [
   {
     'name': 'Reyna',
     'description': 'Power',
-    'image':
-        'http://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt41a00efc125c83c8/615f8bdbaeba391136e443bf/Reyna.png'
+    'image': 'https://i.ytimg.com/vi/IzsQNYrq9AM/maxresdefault.jpg'
   },
   {
     'name': 'Chamber',
