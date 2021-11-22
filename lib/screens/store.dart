@@ -16,6 +16,7 @@ class _StoreHomeState extends State<StoreHome> {
         title: const Text('Hood Store'),
         elevation: 0,
         backgroundColor: Colors.redAccent,
+        centerTitle: true,
       ),
       body: FutureBuilder(
         future: APIservice().getAllPosts(),
@@ -30,6 +31,15 @@ class _StoreHomeState extends State<StoreHome> {
                         print('hello');
                       },
                       title: Text(snapshot.data[index]['title']),
+                      leading: Image.network(
+                        snapshot.data[index]['image'],
+                        height: 50,
+                        width: 30,
+                      ),
+                      subtitle:
+                          Text("RM" + snapshot.data[index]['price'].toString()),
+                      trailing: Text(
+                          snapshot.data[index]['rating']['rate'].toString()),
                     );
                   }),
             );
