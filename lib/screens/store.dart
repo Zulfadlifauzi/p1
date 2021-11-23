@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project1/screens/all_category.dart';
+import 'package:project1/screens/cart_product.dart';
 import 'package:project1/screens/product_details.dart';
 import 'package:project1/services/apiService.dart';
 
@@ -27,7 +28,15 @@ class _StoreHomeState extends State<StoreHome> {
                     MaterialPageRoute(
                         builder: (context) => const AllCategory()));
               },
-              icon: Icon(Icons.view_list))
+              icon: Icon(Icons.view_list)),
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CartScreen()));
+              },
+              icon: Icon(Icons.shopping_cart_outlined))
         ],
       ),
       body: FutureBuilder(

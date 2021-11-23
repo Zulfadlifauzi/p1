@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/screens/category_product.dart';
 import 'package:project1/services/apiservice.dart';
 
 class AllCategory extends StatelessWidget {
@@ -21,8 +22,11 @@ class AllCategory extends StatelessWidget {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    ScaffoldMessenger.of(context)
-                        .showSnackBar(SnackBar(content: Text('Successfully')));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                CategoryScreens(snapshot.data[index])));
                   },
                   child: Card(
                     elevation: 2,

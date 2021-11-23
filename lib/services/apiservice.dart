@@ -30,8 +30,17 @@ class APIservice {
 
   Future getProductByCategory(String name) async {
     final fetchProductCategory =
-        Uri.parse('https://fakestoreapi.com/products/products/category/$name');
+        Uri.parse('https://fakestoreapi.com/products/category/$name');
     final response = await http.get(fetchProductCategory);
+    print(response.statusCode);
+    print(response.body);
+    return json.decode(response.body);
+  }
+
+  Future getCart(String userId) async {
+    final fetchCartProduct =
+        Uri.parse('https://fakestoreapi.com/carts/$userId');
+    final response = await http.get(fetchCartProduct);
     print(response.statusCode);
     print(response.body);
     return json.decode(response.body);
