@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/screens/product_details.dart';
 import 'package:project1/services/apiService.dart';
 
 class StoreHome extends StatefulWidget {
@@ -28,7 +29,11 @@ class _StoreHomeState extends State<StoreHome> {
                   itemBuilder: (context, index) {
                     return ListTile(
                       onTap: () {
-                        print('hello');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProductDetailScreen(
+                                    snapshot.data[index]['id'])));
                       },
                       title: Text(snapshot.data[index]['title']),
                       leading: Image.network(
