@@ -13,15 +13,55 @@ class CartScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: FutureBuilder(
-          future: APIservice().getCart('1'),
+          future: APIservice().getCart('2'),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
-              return Text('successfully');
+              List products = snapshot.data['products'];
+              return ListView.builder(
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  return FutureBuilder(
+                      future: APIservice()
+                          .getSingleProducts(products[index]['productId']),
+                      builder: (context, AsyncSnapshot asyncSnapshot) {
+                        if (asyncSnapshot.hasData) {
+                          return ListTile(
+                            title: Text(asyncSnapshot.data['title']),
+                            leading: Image.network(
+                              asyncSnapshot.data['image'],
+                              height: 40,
+                            ),
+                            subtitle: Text("Quantity - " +
+                                products[index]['quantity'].toString()),
+                            trailing: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              ),
+                            ),
+                          );
+                        }
+                        return LinearProgressIndicator();
+                      });
+                },
+              );
             }
             return Center(
               child: CircularProgressIndicator(),
             );
           }),
+      bottomNavigationBar: Container(
+        height: 60,
+        width: double.infinity,
+        color: Colors.green,
+        child: Center(
+          child: Text(
+            'Order Now',
+            style: TextStyle(color: Colors.white, fontSize: 30),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -30,11 +30,13 @@ class AllCategory extends StatelessWidget {
                   },
                   child: Card(
                     elevation: 2,
-                    margin: const EdgeInsets.all(15),
+                    margin: const EdgeInsets.only(
+                        left: 10, right: 10, top: 5, bottom: 5),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
+                        borderRadius: BorderRadius.circular(5)),
                     child: Container(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.only(
+                          left: 15, right: 15, top: 20, bottom: 20),
                       child: Center(
                         child: Text(
                           snapshot.data[index].toString().toUpperCase(),
