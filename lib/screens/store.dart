@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/screens/all_category.dart';
 import 'package:project1/screens/product_details.dart';
 import 'package:project1/services/apiService.dart';
 
@@ -18,6 +19,16 @@ class _StoreHomeState extends State<StoreHome> {
         elevation: 0,
         backgroundColor: Colors.redAccent,
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AllCategory()));
+              },
+              icon: Icon(Icons.view_list))
+        ],
       ),
       body: FutureBuilder(
         future: APIservice().getAllPosts(),
@@ -43,8 +54,6 @@ class _StoreHomeState extends State<StoreHome> {
                       ),
                       subtitle:
                           Text("RM" + snapshot.data[index]['price'].toString()),
-                      trailing: Text(
-                          snapshot.data[index]['rating']['rate'].toString()),
                     );
                   }),
             );

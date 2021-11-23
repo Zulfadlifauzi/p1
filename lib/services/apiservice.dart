@@ -18,4 +18,22 @@ class APIservice {
     print(response.body);
     return json.decode(response.body);
   }
+
+  Future getAllCategory() async {
+    final allCategoryProductUrl =
+        Uri.parse('https://fakestoreapi.com/products/categories');
+    final response = await http.get(allCategoryProductUrl);
+    print(response.statusCode);
+    print(response.body);
+    return json.decode(response.body);
+  }
+
+  Future getProductByCategory(String name) async {
+    final fetchProductCategory =
+        Uri.parse('https://fakestoreapi.com/products/products/category/$name');
+    final response = await http.get(fetchProductCategory);
+    print(response.statusCode);
+    print(response.body);
+    return json.decode(response.body);
+  }
 }
