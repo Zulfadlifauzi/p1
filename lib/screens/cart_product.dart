@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/models/store_model.dart';
 import 'package:project1/services/apiservice.dart';
 
 class CartScreen extends StatelessWidget {
@@ -25,10 +26,11 @@ class CartScreen extends StatelessWidget {
                           .getSingleProducts(products[index]['productId']),
                       builder: (context, AsyncSnapshot asyncSnapshot) {
                         if (asyncSnapshot.hasData) {
+                          Product _product = asyncSnapshot.data;
                           return ListTile(
-                            title: Text(asyncSnapshot.data['title']),
+                            title: Text(_product.title.toString()),
                             leading: Image.network(
-                              asyncSnapshot.data['image'],
+                              _product.image.toString(),
                               height: 40,
                             ),
                             subtitle: Text("Quantity - " +

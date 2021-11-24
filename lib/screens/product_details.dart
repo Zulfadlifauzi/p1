@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/models/store_model.dart';
 import 'package:project1/services/apiservice.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -15,6 +16,7 @@ class ProductDetailScreen extends StatelessWidget {
         future: APIservice().getSingleProducts(id),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
+            Product _product = snapshot.data;
             return SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(left: 20, right: 20),
@@ -25,7 +27,7 @@ class ProductDetailScreen extends StatelessWidget {
                       height: 20,
                     ),
                     Image.network(
-                      snapshot.data['image'],
+                      _product.image.toString(),
                       height: 200,
                       width: double.infinity,
                     ),
@@ -34,7 +36,7 @@ class ProductDetailScreen extends StatelessWidget {
                     ),
                     Center(
                       child: Text(
-                        snapshot.data['title'],
+                        _product.title.toString(),
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500),
                       ),
@@ -43,7 +45,7 @@ class ProductDetailScreen extends StatelessWidget {
                       height: 10,
                     ),
                     Chip(
-                      label: Text(snapshot.data['category'].toString(),
+                      label: Text(_product.category.toString(),
                           style: TextStyle(fontSize: 15, color: Colors.white)),
                       backgroundColor: Colors.blueGrey,
                     ),
@@ -52,21 +54,15 @@ class ProductDetailScreen extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Text("RM" + snapshot.data['price'].toString(),
+                        Text("RM" + _product.price.toString(),
                             style: const TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold)),
-                        Expanded(child: Container()),
-                        const Icon(Icons.star),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(snapshot.data['rating']['rate'].toString()),
                       ],
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Text(snapshot.data['description'])
+                    Text(_product.description.toString())
                   ],
                 ),
               ),
