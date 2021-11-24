@@ -40,23 +40,23 @@ class _FruitScreenState extends State<FruitScreen> {
                           Text(
                               'Carbohydrates: ${_fruit.nutritions!.carbohydrates}'),
                           const SizedBox(
-                            width: 10,
+                            width: 20,
                           ),
                           Text('Carbohydrates: ${_fruit.nutritions!.protein}'),
                           const SizedBox(
-                            width: 10,
+                            width: 20,
                           ),
                           Text('Carbohydrates: ${_fruit.nutritions!.fat}'),
                           const SizedBox(
-                            width: 10,
+                            width: 20,
                           ),
                           Text('Carbohydrates: ${_fruit.nutritions!.calories}'),
                           const SizedBox(
-                            width: 10,
+                            width: 20,
                           ),
                           Text('Carbohydrates: ${_fruit.nutritions!.sugar}'),
                           const SizedBox(
-                            width: 10,
+                            width: 20,
                           ),
                         ],
                       ),

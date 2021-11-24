@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project1/models/store_model.dart';
 import 'package:project1/screens/all_category.dart';
 import 'package:project1/screens/cart_product.dart';
+import 'package:project1/screens/fruits_screen.dart';
 import 'package:project1/screens/product_details.dart';
 import 'package:project1/services/apiService.dart';
 
@@ -21,6 +22,12 @@ class _StoreHomeState extends State<StoreHome> {
         elevation: 0,
         backgroundColor: Colors.redAccent,
         centerTitle: true,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FruitScreen()));
+            },
+            icon: Icon(Icons.balcony_outlined)),
         actions: [
           IconButton(
               onPressed: () {
