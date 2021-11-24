@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/models/store_model.dart';
 import 'package:project1/services/apiservice.dart';
 
 class CartScreen extends StatelessWidget {
@@ -13,7 +14,7 @@ class CartScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: FutureBuilder(
-          future: APIservice().getCart('2'),
+          future: APIservice().getCart('1'),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               List products = snapshot.data['products'];
@@ -25,16 +26,23 @@ class CartScreen extends StatelessWidget {
                           .getSingleProducts(products[index]['productId']),
                       builder: (context, AsyncSnapshot asyncSnapshot) {
                         if (asyncSnapshot.hasData) {
+                          Product _product = asyncSnapshot.data;
                           return ListTile(
-                            title: Text(asyncSnapshot.data['title']),
+                            title: Text(_product.title.toString()),
                             leading: Image.network(
-                              asyncSnapshot.data['image'],
+                              _product.image.toString(),
                               height: 40,
                             ),
                             subtitle: Text("Quantity - " +
                                 products[index]['quantity'].toString()),
                             trailing: IconButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                await APIservice().deleteCart('1');
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content:
+                                            Text('Deleted Successfully ')));
+                              },
                               icon: Icon(
                                 Icons.delete,
                                 color: Colors.red,
