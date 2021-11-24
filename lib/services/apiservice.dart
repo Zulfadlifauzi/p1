@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:project1/models/fruits_model.dart';
 import 'package:project1/models/store_model.dart';
 
 class APIservice {
@@ -53,6 +54,31 @@ class APIservice {
     return json.decode(response.body);
   }
 
+  Future updateCart(int userId, int productId) async {
+    final updateCartUrl = Uri.parse('https://fakestoreapi.com/carts/$userId');
+    final response = await http.put(updateCartUrl, body: {
+      'userId': '$userId',
+      'date': DateTime.now().toString(),
+      'products': [
+        {
+          'productId': '$productId',
+          'quantity': '1',
+        }
+      ].toString()
+    });
+    print(response.statusCode);
+    print(response.body);
+    return json.decode(response.body);
+  }
+
+  Future deleteCart(String userId) async {
+    final deleteCartUrl = Uri.parse('https://fakestoreapi.com/carts/$userId');
+    final response = await http.delete(deleteCartUrl);
+    print(response.statusCode);
+    print(response.body);
+    return json.decode(response.body);
+  }
+
   Future userAuthentication(String email, String password) async {
     final authUrl = Uri.parse('http://tarsoft-lms-lite.test/api/v1/login');
     final response =
@@ -73,5 +99,14 @@ class APIservice {
     print(response.statusCode);
     print(response.body);
     return json.decode(response.body);
+  }
+
+  //Get all fruits
+  Future<List<Fruit>> getAllFruits() async {
+    final allFruitsUrl = Uri.parse('https://www.fruityvice.com/api/fruit/all');
+    var response = await http.get(allFruitsUrl);
+    List body = json.decode(response.body);
+    List<Fruit> allFruits = body.map((fruit) => Fruit.fromJson(fruit)).toList();
+    return allFruits;
   }
 }

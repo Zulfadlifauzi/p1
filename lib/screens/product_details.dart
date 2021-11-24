@@ -75,7 +75,11 @@ class ProductDetailScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add_shopping_cart_outlined),
-        onPressed: () {},
+        onPressed: () async {
+          await APIservice().updateCart(1, id);
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text('Product added to cart')));
+        },
         backgroundColor: Colors.green,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

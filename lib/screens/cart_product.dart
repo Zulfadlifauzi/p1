@@ -14,7 +14,7 @@ class CartScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: FutureBuilder(
-          future: APIservice().getCart('2'),
+          future: APIservice().getCart('1'),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
               List products = snapshot.data['products'];
@@ -36,7 +36,13 @@ class CartScreen extends StatelessWidget {
                             subtitle: Text("Quantity - " +
                                 products[index]['quantity'].toString()),
                             trailing: IconButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                await APIservice().deleteCart('1');
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content:
+                                            Text('Deleted Successfully ')));
+                              },
                               icon: Icon(
                                 Icons.delete,
                                 color: Colors.red,
