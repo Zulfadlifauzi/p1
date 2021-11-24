@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project1/models/store_model.dart';
 import 'package:project1/screens/all_category.dart';
 import 'package:project1/screens/cart_product.dart';
 import 'package:project1/screens/product_details.dart';
@@ -47,22 +48,22 @@ class _StoreHomeState extends State<StoreHome> {
               child: ListView.builder(
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index) {
+                    Product _product = snapshot.data[index];
                     return ListTile(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ProductDetailScreen(
-                                    snapshot.data[index]['id'])));
+                                builder: (context) =>
+                                    ProductDetailScreen(_product.id!.toInt())));
                       },
-                      title: Text(snapshot.data[index]['title']),
+                      title: Text(_product.title.toString()),
                       leading: Image.network(
-                        snapshot.data[index]['image'],
+                        _product.image.toString(),
                         height: 50,
                         width: 30,
                       ),
-                      subtitle:
-                          Text("RM" + snapshot.data[index]['price'].toString()),
+                      subtitle: Text("RM" + _product.price.toString()),
                     );
                   }),
             );
